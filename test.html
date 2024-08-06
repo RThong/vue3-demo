@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">{{ message }}</div>
+
+    <div>
+      <input type="text" v-model="value" />
+      <p>{{success.text}}</p>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <script>
+      const { createApp, ref, reactive } = Vue
+
+      createApp({
+        setup() {
+          const message = ref('Hello vue!')
+          const value = ref('132')
+          const success = reactive({
+            text: 'valid',
+            color: 'green'
+          })
+          const fail = reactive({
+            text: 'invalid',
+            color: 'red'
+          })
+          return {
+            value,
+            message,
+            success,
+            fail
+          }
+        }
+      }).mount('#app')
+    </script>
+  </body>
+</html>
